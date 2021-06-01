@@ -5,6 +5,7 @@ function countdown() {
   const hoursE1 = document.getElementById('hours');
   const minutesE1 = document.getElementById('minutes');
   const secondsE1 = document.getElementById('seconds');
+
   const newYearsDate = new Date(newYears);
   const currentDate = new Date();
 
