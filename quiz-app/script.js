@@ -3,7 +3,7 @@ const quizData = [
     question: 'What is the first letter of computer?',
     a: 'U',
     b: 'C',
-    C: 'S',
+    c: 'S',
     d: 'R',
     correct: 'b'
   }, {
@@ -36,23 +36,26 @@ const option_1 = document.getElementById("option_1");
 const option_2 = document.getElementById("option_2");
 const option_3 = document.getElementById("option_3");
 const option_4 = document.getElementById("option_4");
+const submitBtn = document.getElementById("submit")
 
-//const loadQuiz = () => {
-//  question.innerText = quizData[0].question;
-//}
-//loadQuiz();
 let currentQuiz = 0;
+
 
 loadQuiz();
 
 function loadQuiz() {
   const currentQuizData = quizData[currentQuiz];
 
-  questionE1.innerText = question;
-  option_1.innerText = a;
-  option_2.innerText = b;
-  option_3.innerText = c;
-  option_4.innerText = d;
-
-  currentQuestion++;
+  questionE1.innerText = currentQuizData.question;
+  option_1.innerText = currentQuizData.a;
+  option_2.innerText = currentQuizData.b;
+  option_3.innerText = currentQuizData.c;
+  option_4.innerText = currentQuizData.d;
 }
+
+  submitBtn.addEventListener("click", () => {
+  currentQuiz++;
+
+  loadQuiz();
+
+  });

@@ -30,7 +30,7 @@ body {
 }
 ul {
   list-style-type: none;
-  margin-left: -40px;
+  padding: 0;
 }
 button {
   background-color: #10ac84;
