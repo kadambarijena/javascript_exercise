@@ -32,6 +32,11 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
+ul li label {
+  cursor: pointer;
+}
+
 button {
   background-color: #10ac84;
   border: 2px;
@@ -42,6 +47,7 @@ button {
   width: 100%;
   color: white;
 }
+
 button:hover {
   border-color: red;
 
