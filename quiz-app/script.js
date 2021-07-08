@@ -90,7 +90,9 @@ function deselectAnswers() {
       if(currentQuiz < quizData.length) {
         loadQuiz();
       } else {
-        showScore.innerHTML = `<h2>You scored ${score} out of ${quizData.length} questions.</h2>`;
+        showScore.innerHTML = `
+        <h2>You scored ${score} out of ${quizData.length} questions.</h2>
+        <button onclick="location.reload()">Reload</button>`;
       }
 
     }
