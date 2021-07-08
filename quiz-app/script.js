@@ -31,12 +31,14 @@ const quizData = [
   }
 ];
 
+const showScore = document.getElementById("showScore");
+const answerEls = document.querySelectorAll(".answer");
 const questionE1 = document.getElementById("question");
 const option_1 = document.getElementById("option_1");
 const option_2 = document.getElementById("option_2");
 const option_3 = document.getElementById("option_3");
 const option_4 = document.getElementById("option_4");
-const submitBtn = document.getElementById("submit")
+const submitBtn = document.getElementById("submit");
 
 let currentQuiz = 0;
 let score = 0;
@@ -45,6 +47,8 @@ let score = 0;
 loadQuiz();
 
 function loadQuiz() {
+  deselectAnswers();
+
   const currentQuizData = quizData[currentQuiz];
 
   questionE1.innerText = currentQuizData.question;
@@ -55,35 +59,40 @@ function loadQuiz() {
 }
 
 function getSelected() {
-  const answerEls = document.querySelectorAll(".answer");
-
+  let answer = undefined;
 
   answerEls.forEach((answerEl) => {
     if (answerEl.checked) {
-      return answerEl.id;
+      answer = answerEl.id;
     }
   });
 
-  return undefined;
+  return answer;
+}
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => {
+    answerEl.checked = false;
+  });
 }
 
   submitBtn.addEventListener("click", () => {
-    // chech to see the answer
+    // check to see the answer
     const answer = getSelected();
-     console.log(answer);
+    console.log(answer);
 
-     if (answer) {
-        currentQuiz++;
-        if(currentQuiz < quizData.length) {
-          loadQuiz();
-        } else {
-          alert("Finished all questions");
-        }
+    if (answer) {
+      if (answer === quizData[currentQuiz].correct) {
+        score++;
+      }
 
-     }
+      currentQuiz++;
+      if(currentQuiz < quizData.length) {
+        loadQuiz();
+      } else {
+        showScore.innerHTML = `<h2>You scored ${score} out of ${quizData.length} questions.</h2>`;
+      }
 
+    }
 
-
-    getSelected();
-
- });
+});
