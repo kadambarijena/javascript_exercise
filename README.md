@@ -1,2 +1,4 @@
-# javascript_exercise
-Countdown Timer
+3.Recipe app
+ - List of recipe.
+ - Rcipe info on click.
+ - Favorite Recipe.
