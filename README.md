@@ -4,3 +4,7 @@
  - select answer
  - show score
 
+4. Notes app
+ - CRUD note
+ - Markdown
+ - Local storage
