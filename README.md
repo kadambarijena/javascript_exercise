@@ -7,3 +7,7 @@
  - CRUD todos
  - Locsl storage
 
+4. Notes app
+ - CRUD note
+ - Markdown
+ - Local storage
