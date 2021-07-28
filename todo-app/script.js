@@ -6,6 +6,12 @@ form.addEventListener('submit', (e) => {
 	// stop form submission
 	e.preventDefault();
 
+  addTodo();
+});
+
+
+function addTodo() {
+
 	const todoText = input.value;
 
 	if(todoText) {
@@ -14,6 +20,8 @@ form.addEventListener('submit', (e) => {
 
 		todoEl.addEventListener('click', () => {
 			todoEl.classList.toggle('completed');
+
+      updateLs();
 		});
 
   //Capture the right click event for remove
@@ -24,11 +32,27 @@ form.addEventListener('submit', (e) => {
 
     });
 
-
-		todos.appendChild(todoEl);
+   	todos.appendChild(todoEl);
 
     //empty to input
 		input.value = "";
 
+      updateLs();
 	}
-});
+
+}
+
+function updateLs() {
+	const todosEl = document.querySelectorAll('li');
+
+	const todos = [];
+
+	todosEl.forEach((todoEl) => {
+		todos.push({
+			text: todoEl.innerText,
+			completed: todoEl.classList.contains("completed"),
+		});
+	});
+
+	localStorage.setItem('todos', JSON.stringify(todos));
+}
