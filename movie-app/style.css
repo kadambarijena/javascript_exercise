@@ -33,3 +33,26 @@ body {
   text-align: center;
   width: 12%;
 }
+
+#movie_search {
+	margin-top: 15px;
+}
+
+section {
+	display: flex;
+	width: 100%;
+	overflow-x: auto;
+	height: 50%;
+}
+
+section img {
+	height: 350px;
+	width: 350px;
+	transition: 250ms all;
+}
+
+img:hover {
+	margin-left: 0 40px;
+	cursor: pointer;
+	transform: scale(1.2);
+}
