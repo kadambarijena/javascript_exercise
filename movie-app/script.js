@@ -11,9 +11,7 @@ const movieSearch =document.querySelector('#movie_search');
 
 function movieSection(movies) {
   return movies.map((movie) => {
-    return `
-      <img src=${IMAGE_URL + movie.poster_path} data-movie-id=${movie.id}/>
-    `;
+    return `<img src=${IMAGE_URL + movie.poster_path} data-movie-id=${movie.id}/>`;
   })
 }
 
@@ -47,6 +45,15 @@ function createMovieContainer(movies) {
 
 }
 
+function renderSearchMovies(data) {
+  //data.results[]
+    movieSearch.innerHTML = '';
+    const movies = data.results;
+    const movieBlock = createMovieContainer(movies);
+    movieSearch.appendChild(movieBlock);
+    console.log('Data: ', data);
+}
+
 buttonEl.onclick = function(e) {
   e.preventDefault();
   const value = inputEl.value;
@@ -56,16 +63,11 @@ buttonEl.onclick = function(e) {
 
   fetch(newUrl)
     .then((res) => res.json())//Return a json
-    .then((data) => {
-      //data.results[]
-      const movies = data.results;
-      const movieBlock = createMovieContainer(movies);
-      movieSearch.appendChild(movieBlock);
-      console.log('Data: ', data);
-    })
+    .then(renderSearchMovies)
     .catch((error) => {
       console.log('Error: ', error);
     });
 
+  inputEl.value = '';
   console.log('Value: ', value);
 }
